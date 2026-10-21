@@ -1,0 +1,17 @@
+---
+import Footer from "../../components/Footer.astro";
+import Header from "../../components/Header.astro";
+import Icon from "../../components/Icon.astro";
+import Layout from "../../layouts/Layout.astro";
+---
+<Layout title="Tiga Searah — Studi Kasus Website Studio" description="Proyek internal Tiga Searah: website studio berbasis Astro dengan pengalaman 3D, konten yang jelas, dan formulir permintaan proyek.">
+  <div id="top"></div><Header />
+  <main id="main" class="document-page container">
+    <div class="case-eyebrow-row"><span class="badge-pill">Karya Pilihan</span><span class="badge-category">Proyek Studio Internal</span></div><h1>Three paths.<br /><span class="serif-word">One digital home.</span></h1>
+    <p class="document-lead">Website studio Tiga Searah. Ruang untuk memperkenalkan tiga keahlian, menjelaskan cara kerja, dan membuka percakapan tentang proyek berikutnya.</p>
+    <div class="case-meta"><div><span class="mono">PROJECT</span><p>Tiga Searah — Website Studio</p></div><div><span class="mono">CATEGORY</span><p>Proyek Internal & Website Studio</p></div><div><span class="mono">CONTRIBUTION</span><p>Struktur konten, UI, frontend, API, 3D</p></div></div>
+    <img class="case-image" src="/images/studio-preview.webp" width="1440" height="960" alt="Screenshot halaman utama website Tiga Searah" />
+    <div class="document-content"><h2>Tantangan</h2><p>Menghadirkan identitas studio dengan karakter kuat, sekaligus menjelaskan layanan dan cara memulai proyek dengan jelas. Elemen 3D harus mendukung pesan brand tanpa menghalangi pembaca.</p><h2>Pendekatan</h2><p>Tipografi besar, komposisi gelap–terang, galeri screenshot proyek asli, dan tiga panah metalik pada bidang biru membentuk identitas studio. Konten utama disajikan sebagai HTML statis; pengalaman 3D dimuat terpisah dengan fallback gambar. React digunakan pada formulir yang membutuhkan pengelolaan status.</p><h2>Kontribusi Tiga Searah</h2><p>Perumusan struktur halaman dan konten, desain antarmuka responsif, implementasi frontend, visual 3D prosedural, serta API permintaan proyek. Integrasi email memerlukan kredensial Resend dan sender domain terverifikasi sebelum digunakan di produksi.</p><h2>Teknologi</h2><p>Astro, Tailwind CSS v4, React, Three.js, GSAP, Nitro, Resend, Zod, Bun, Vitest, dan Playwright.</p><h2>Status proyek</h2><p>Proyek internal ini merupakan website yang sedang kamu lihat. Tidak ada klaim hasil bisnis, metrik klien, atau testimoni yang dibuat untuk studi kasus ini.</p></div>
+    <div class="document-actions"><a class="button button-blue" href="/">Jelajahi website <Icon /></a><a class="text-link" href="/#contact">Bahas proyekmu <Icon /></a></div>
+  </main><Footer />
+</Layout>

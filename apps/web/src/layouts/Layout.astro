@@ -1,0 +1,129 @@
+---
+import "@fontsource/plus-jakarta-sans/latin-400.css";
+import "@fontsource/plus-jakarta-sans/latin-500.css";
+import "@fontsource/plus-jakarta-sans/latin-600.css";
+import "@fontsource/plus-jakarta-sans/latin-700.css";
+import "@fontsource/plus-jakarta-sans/latin-800.css";
+import "../styles/global.css";
+
+interface Props {
+	title?: string;
+	description?: string;
+	noindex?: boolean;
+}
+const {
+	title = "Tiga Searah - Website Development",
+	description = "Tiga Searah membantu bisnis dan organisasi membangun website, aplikasi web, serta backend dan integrasi API. Tiga keahlian, satu arah. Mulai proyekmu bersama kami.",
+	noindex = false,
+} = Astro.props;
+const productionSite =
+	Astro.site && !["localhost", "127.0.0.1"].includes(Astro.site.hostname)
+		? Astro.site
+		: undefined;
+const canonical = productionSite
+	? new URL(Astro.url.pathname, productionSite).href
+	: undefined;
+---
+
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#111318" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    {noindex && <meta name="robots" content="noindex,follow" />}
+    {canonical && <link rel="canonical" href={canonical} />}
+    <link rel="icon" type="image/png" href="/favicon.png" />
+    <script is:inline>
+      (function () {
+        try {
+          const saved = localStorage.getItem("theme");
+          if (saved === "light") {
+            document.documentElement.classList.add("light-theme");
+            const metaTheme = document.querySelector(
+              'meta[name="theme-color"]',
+            );
+            if (metaTheme) metaTheme.setAttribute("content", "#f8fafc");
+          }
+        } catch (_) {}
+        document.documentElement.classList.add("js");
+      })();
+    </script>
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="id_ID" />
+    <meta property="og:site_name" content="Tiga Searah" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    {canonical && <meta property="og:url" content={canonical} />}
+    <meta
+      property="og:image"
+      content={new URL("/og-image.png", productionSite || Astro.url.origin)
+        .href}
+    />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta
+      property="og:image:alt"
+      content="Tiga Searah. Beda Ayah, Satu Arah. Website & Digital Studio."
+    />
+    <meta name="twitter:card" content="summary_large_image" />
+    <script
+      type="application/ld+json"
+      set:html={JSON.stringify({
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        name: "Tiga Searah",
+        ...(productionSite
+          ? {
+              url: productionSite.href,
+              logo: new URL("/images/tiga-searah.webp", productionSite).href,
+            }
+          : {}),
+        email: "trio.searah@gmail.com",
+        slogan: "Beda Ayah, Satu Arah.",
+      })}
+    />
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Langsung ke konten</a>
+    <div class="scroll-progress" aria-hidden="true"></div>
+    <slot />
+    <script>
+      // Reveal on scroll. Astro bundles this per page; it no-ops without IntersectionObserver
+      // or when the visitor asked for reduced motion, so content stays static and visible.
+      if (
+        !matchMedia("(prefers-reduced-motion: reduce)").matches &&
+        "IntersectionObserver" in window
+      ) {
+        const selector =
+          ".section-label, .section-heading-row, .work-grid > *, .studio-project, .service-list > *, .about-top > *, .team-roles > *, .values-row, .process-list > *, .faq-list > *, .contact-form, .case-showcase, .case-meta, .case-story > *, .document-content > *, .document-actions, .document-lead";
+        const observer = new IntersectionObserver(
+          (entries) => {
+            for (const entry of entries) {
+              if (!entry.isIntersecting) continue;
+              entry.target.classList.add("is-visible");
+              observer.unobserve(entry.target);
+            }
+          },
+          { rootMargin: "0px 0px -8% 0px" },
+        );
+        document.querySelectorAll<HTMLElement>(selector).forEach((element) => {
+          if (
+            element.closest(".hero") ||
+            ["STYLE", "SCRIPT", "LINK"].includes(element.tagName)
+          )
+            return;
+          element.classList.add("reveal");
+          element.style.setProperty(
+            "--reveal-i",
+            String([...element.parentElement!.children].indexOf(element) % 5),
+          );
+          observer.observe(element);
+        });
+      }
+    </script>
+    <script src="../scripts/theme-toggle.ts"></script>
+  </body>
+</html>

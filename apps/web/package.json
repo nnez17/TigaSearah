@@ -1,0 +1,28 @@
+{
+	"name": "@tiga-searah/web",
+	"private": true,
+	"type": "module",
+	"scripts": {
+		"dev": "ASTRO_TELEMETRY_DISABLED=1 astro dev --force --host 127.0.0.1 --port 4321",
+		"build": "ASTRO_TELEMETRY_DISABLED=1 astro build",
+		"check": "ASTRO_TELEMETRY_DISABLED=1 astro check"
+	},
+	"dependencies": {
+		"@astrojs/react": "^7.0.1",
+		"@astrojs/sitemap": "^3.7.4",
+		"@fontsource/plus-jakarta-sans": "^5.2.6",
+		"@tailwindcss/vite": "^4.1.13",
+		"astro": "^7.3.8",
+		"gsap": "^3.13.0",
+		"react": "^19.1.1",
+		"react-dom": "^19.1.1",
+		"tailwindcss": "^4.1.13",
+		"three": "^0.180.0"
+	},
+	"devDependencies": {
+		"@astrojs/check": "^0.9.4",
+		"@types/react": "^19.1.12",
+		"@types/react-dom": "^19.1.9",
+		"@types/three": "^0.180.0"
+	}
+}
