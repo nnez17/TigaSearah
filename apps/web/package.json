@@ -3,11 +3,12 @@
 	"private": true,
 	"type": "module",
 	"scripts": {
-		"dev": "ASTRO_TELEMETRY_DISABLED=1 astro dev --force --host 127.0.0.1 --port 4321",
-		"build": "ASTRO_TELEMETRY_DISABLED=1 astro build",
-		"check": "ASTRO_TELEMETRY_DISABLED=1 astro check"
+		"dev": "astro dev --force --host 127.0.0.1 --port 4321",
+		"build": "astro build",
+		"check": "astro check"
 	},
 	"dependencies": {
+		"@tiga-searah/shared": "workspace:*",
 		"@astrojs/react": "^7.0.1",
 		"@astrojs/sitemap": "^3.7.4",
 		"@fontsource/plus-jakarta-sans": "^5.2.6",

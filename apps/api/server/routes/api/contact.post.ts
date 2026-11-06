@@ -1,14 +1,13 @@
 import {
 	defineEventHandler,
 	getHeader,
-	getRequestIP,
+	readBody,
 	setResponseHeader,
 	setResponseStatus,
 } from "h3";
 import { Resend } from "resend";
-import { contactSchema } from "../../../../../shared/contact";
+import { contactSchema } from "@tiga-searah/shared/contact";
 import { buildEmail } from "../../utils/email";
-import { allowRequest } from "../../utils/rate-limit";
 
 const MAX_BYTES = 16 * 1024;
 
@@ -21,76 +20,71 @@ export default defineEventHandler(async (event) => {
 		setResponseStatus(event, status);
 		return { success: false, message, ...(errors ? { errors } : {}) };
 	};
+
 	setResponseHeader(event, "Cache-Control", "no-store");
+
+	// Validasi Origin (CORS & Anti-CSRF)
 	const origin = getHeader(event, "origin");
 	const configuredOrigin = process.env.CONTACT_ALLOWED_ORIGIN;
 	const allowedOrigins = configuredOrigin
-		? [configuredOrigin]
+		? configuredOrigin.split(",").map((item) => item.trim())
 		: ["http://localhost:4321", "http://127.0.0.1:4321"];
-	if (!origin || !allowedOrigins.includes(origin))
+
+	if (!origin || !allowedOrigins.includes(origin)) {
 		return fail(403, "Permintaan tidak diizinkan.");
-	if (
-		getHeader(event, "content-type")?.split(";")[0].trim() !==
-		"application/json"
-	)
+	}
+
+	// Validasi Content-Type
+	const contentType = getHeader(event, "content-type");
+	if (!contentType || contentType.split(";")[0].trim() !== "application/json") {
 		return fail(415, "Gunakan application/json.");
+	}
+
+	// Validasi Content-Length
 	const declaredLength = Number(getHeader(event, "content-length") || 0);
-	if (!Number.isFinite(declaredLength) || declaredLength > MAX_BYTES)
+	if (!Number.isFinite(declaredLength) || declaredLength > MAX_BYTES) {
 		return fail(413, "Pesan terlalu besar. Maksimal 16 KB.");
-	const ip =
-		getRequestIP(event, {
-			xForwardedFor: process.env.TRUST_PROXY === "true",
-		}) || "unknown";
-	try {
-		if (!(await allowRequest(ip, "contact", 5))) {
-			setResponseHeader(event, "Retry-After", 600);
-			return fail(
-				429,
-				"Terlalu banyak percobaan. Tunggu 10 menit atau hubungi kami lewat email.",
-			);
-		}
-	} catch {
-		return fail(
-			503,
-			"Layanan sementara tidak tersedia. Coba lagi atau kirim email langsung.",
-		);
 	}
 
 	let body: unknown;
 	try {
-		const chunks: Buffer[] = [];
-		let bytes = 0;
-		for await (const chunk of event.node.req.iterator({
-			destroyOnReturn: false,
-		})) {
-			const buffer = Buffer.isBuffer(chunk) ? chunk : Buffer.from(chunk);
-			bytes += buffer.length;
-			if (bytes > MAX_BYTES) {
-				event.node.req.resume();
-				return fail(413, "Pesan terlalu besar. Maksimal 16 KB.");
-			}
-			chunks.push(buffer);
+		body = await readBody(event);
+		if (!body || typeof body !== "object") {
+			return fail(400, "Pesan kosong.");
 		}
-		if (!bytes) return fail(400, "Pesan kosong.");
-		body = JSON.parse(Buffer.concat(chunks).toString("utf8"));
 	} catch {
 		return fail(400, "Format pesan tidak valid.");
 	}
+
+	// Honeypot check: bot mengisi field tersembunyi
+	if (
+		typeof (body as Record<string, unknown>).website === "string" &&
+		(body as Record<string, unknown>).website !== ""
+	) {
+		return {
+			success: true,
+			message: "Pesanmu sudah terkirim. Kami akan membalas melalui email.",
+		};
+	}
+
 	const validation = contactSchema.safeParse(body);
 	if (!validation.success) {
 		const errors: Record<string, string> = {};
-		for (const issue of validation.error.issues)
+		for (const issue of validation.error.issues) {
 			errors[String(issue.path[0] || "form")] ??= issue.message;
+		}
 		return fail(400, "Periksa kembali isian formulirmu.", errors);
 	}
 
 	const apiKey = process.env.RESEND_API_KEY;
 	const from = process.env.RESEND_FROM_EMAIL;
-	if (!apiKey || !from)
+	if (!apiKey || !from) {
 		return fail(
 			503,
 			"Formulir belum terhubung ke layanan email. Hubungi trio.searah@gmail.com; isianmu tetap ada.",
 		);
+	}
+
 	const data = validation.data;
 	try {
 		const resend = new Resend(apiKey);
@@ -103,6 +97,7 @@ export default defineEventHandler(async (event) => {
 			},
 			{ signal: AbortSignal.timeout(10000) },
 		);
+
 		if (result.error || !result.data?.id) {
 			console.error("[contact] Email provider rejected request");
 			return fail(
@@ -110,6 +105,7 @@ export default defineEventHandler(async (event) => {
 				"Pesan belum terkirim. Coba lagi atau hubungi kami lewat email.",
 			);
 		}
+
 		return {
 			success: true,
 			message: "Pesanmu sudah terkirim. Kami akan membalas melalui email.",

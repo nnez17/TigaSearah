@@ -1,4 +1,4 @@
-import type { ContactData } from "../../../../shared/contact";
+import type { ContactData } from "@tiga-searah/shared/contact";
 
 export function escapeHTML(value: string): string {
 	return value.replace(

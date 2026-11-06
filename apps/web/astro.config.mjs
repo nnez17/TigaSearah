@@ -1,16 +1,17 @@
-import { fileURLToPath } from "node:url";
 import react from "@astrojs/react";
 import sitemap from "@astrojs/sitemap";
 import tailwindcss from "@tailwindcss/vite";
 import { defineConfig } from "astro/config";
-import { loadEnv } from "vite";
 
-const env = loadEnv(
-	process.env.NODE_ENV || "development",
-	fileURLToPath(new URL("../../", import.meta.url)),
-	"",
-);
-const site = process.env.SITE_URL || env.SITE_URL;
+process.env.ASTRO_TELEMETRY_DISABLED = "1";
+
+if (typeof process.loadEnvFile === "function") {
+	try {
+		process.loadEnvFile(new URL("../../.env", import.meta.url));
+	} catch {}
+}
+
+const site = process.env.SITE_URL;
 if (site && !/^https?:\/\//.test(site))
 	throw new Error("SITE_URL must be an absolute HTTP(S) URL.");
 

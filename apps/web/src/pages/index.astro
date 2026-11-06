@@ -7,73 +7,74 @@ import { projects } from "../data/projects";
 import Layout from "../layouts/Layout.astro";
 
 const services = [
-	{
-		number: "01",
-		name: "Website Development",
-		description:
-			"Rumah digital yang merepresentasikan bisnismu. Cepat, responsif, dan dibuat untuk tujuan yang jelas.",
-		tags: ["Company profile", "Landing page", "Portfolio website"],
-		icon: "globe" as const,
-	},
-	{
-		number: "02",
-		name: "Web Application",
-		description:
-			"Ubah proses yang rumit menjadi aplikasi yang berguna. Fitur dibangun mengikuti kebutuhan penggunamu.",
-		tags: ["Dashboard", "Internal portal", "Custom application"],
-		icon: "code" as const,
-	},
-	{
-		number: "03",
-		name: "Backend & API Integration",
-		description:
-			"Fondasi di balik pengalaman digital. Data, logika bisnis, dan integrasi yang saling terhubung.",
-		tags: ["REST API", "Database", "Service integration"],
-		icon: "layers" as const,
-	},
+  {
+    number: "01",
+    name: "Website Development",
+    description:
+      "Rumah digital yang merepresentasikan bisnismu. Cepat, responsif, dan dibuat untuk tujuan yang jelas.",
+    tags: ["Company profile", "Landing page", "Portfolio website"],
+    icon: "globe" as const,
+  },
+  {
+    number: "02",
+    name: "Web Application",
+    description:
+      "Ubah proses yang rumit menjadi aplikasi yang berguna. Fitur dibangun mengikuti kebutuhan penggunamu.",
+    tags: ["Dashboard", "Internal portal", "Custom application"],
+    icon: "code" as const,
+  },
+  {
+    number: "03",
+    name: "Backend & API Integration",
+    description:
+      "Fondasi di balik pengalaman digital. Data, logika bisnis, dan integrasi yang saling terhubung.",
+    tags: ["REST API", "Database", "Service integration"],
+    icon: "layers" as const,
+  },
 ];
 const stages = [
-	["Discover", "Kenali kebutuhan, pengguna, dan tujuan yang ingin kamu capai."],
-	["Define", "Sepakati ruang lingkup, prioritas, estimasi, dan hasil akhir."],
-	["Design", "Rangkai alur dan visual menjadi pengalaman yang masuk akal."],
-	["Develop", "Bangun, integrasikan, dan uji setiap bagian produk."],
-	["Deliver", "Tinjau bersama, selesaikan revisi, dan siapkan serah terima."],
+  ["Discover", "Kenali kebutuhan, pengguna, dan tujuan yang ingin kamu capai."],
+  ["Define", "Sepakati ruang lingkup, prioritas, estimasi, dan hasil akhir."],
+  ["Design", "Rangkai alur dan visual menjadi pengalaman yang masuk akal."],
+  ["Develop", "Bangun, integrasikan, dan uji setiap bagian produk."],
+  ["Deliver", "Tinjau bersama, selesaikan revisi, dan siapkan serah terima."],
 ];
 const faqs = [
-	[
-		"Layanan apa saja yang tersedia?",
-		"Kami membantu pengembangan website, aplikasi web, serta backend dan integrasi API. Pilih layanan pada formulir, atau ceritakan idemu jika belum yakin.",
-	],
-	[
-		"Bagaimana cara memulai proyek?",
-		"Isi formulir di bawah dengan gambaran kebutuhanmu atau kirim email ke trio.searah@gmail.com. Kami akan membahas tujuan, ruang lingkup, dan langkah berikutnya bersama.",
-	],
-	[
-		"Berapa biaya pembuatan website?",
-		"Biaya mengikuti kebutuhan desain, jumlah halaman, fitur, dan integrasi. Estimasi disusun setelah ruang lingkup dipahami. Belum punya anggaran pasti? Kita bisa mendiskusikan prioritas lebih dahulu.",
-	],
-	[
-		"Berapa lama proses pengerjaannya?",
-		"Durasi bergantung pada kompleksitas, kesiapan konten, dan proses peninjauan. Jadwal dan milestone disepakati setelah kebutuhan jelas. Perubahan ruang lingkup bisa memengaruhi waktu dan biaya.",
-	],
-	[
-		"Bisa mengerjakan proyek dengan kebutuhan khusus?",
-		"Bisa dibahas. Ceritakan masalah dan fitur yang kamu butuhkan; kami akan menilai kesesuaian kemampuan, integrasi, serta ruang lingkup sebelum menyepakati proyek.",
-	],
-	[
-		"Apakah website bisa dikembangkan lagi?",
-		"Pengembangan lanjutan dapat direncanakan sesuai struktur dan kebutuhan website. Sampaikan rencana jangka panjang sejak awal agar pilihan teknis dapat mempertimbangkannya.",
-	],
-	[
-		"Bagaimana ketentuan revisi dan serah terima?",
-		"Jumlah revisi, materi yang diserahkan, akses, serta dokumentasi disepakati dalam ruang lingkup proyek. Kebutuhan di luar kesepakatan dibahas sebagai perubahan ruang lingkup.",
-	],
-	[
-		"Apakah tersedia layanan maintenance?",
-		"Dukungan setelah peluncuran dapat dibahas sesuai kebutuhan dan kapasitas tim. Cakupan, periode, dan biaya maintenance perlu disepakati secara terpisah.",
-	],
+  [
+    "Layanan apa saja yang tersedia?",
+    "Kami membantu pengembangan website, aplikasi web, serta backend dan integrasi API. Pilih layanan pada formulir, atau ceritakan idemu jika belum yakin.",
+  ],
+  [
+    "Bagaimana cara memulai proyek?",
+    "Isi formulir di bawah dengan gambaran kebutuhanmu atau kirim email ke trio.searah@gmail.com. Kami akan membahas tujuan, ruang lingkup, dan langkah berikutnya bersama.",
+  ],
+  [
+    "Berapa biaya pembuatan website?",
+    "Biaya mengikuti kebutuhan desain, jumlah halaman, fitur, dan integrasi. Estimasi disusun setelah ruang lingkup dipahami. Belum punya anggaran pasti? Kita bisa mendiskusikan prioritas lebih dahulu.",
+  ],
+  [
+    "Berapa lama proses pengerjaannya?",
+    "Durasi bergantung pada kompleksitas, kesiapan konten, dan proses peninjauan. Jadwal dan milestone disepakati setelah kebutuhan jelas. Perubahan ruang lingkup bisa memengaruhi waktu dan biaya.",
+  ],
+  [
+    "Bisa mengerjakan proyek dengan kebutuhan khusus?",
+    "Bisa dibahas. Ceritakan masalah dan fitur yang kamu butuhkan; kami akan menilai kesesuaian kemampuan, integrasi, serta ruang lingkup sebelum menyepakati proyek.",
+  ],
+  [
+    "Apakah website bisa dikembangkan lagi?",
+    "Pengembangan lanjutan dapat direncanakan sesuai struktur dan kebutuhan website. Sampaikan rencana jangka panjang sejak awal agar pilihan teknis dapat mempertimbangkannya.",
+  ],
+  [
+    "Bagaimana ketentuan revisi dan serah terima?",
+    "Jumlah revisi, materi yang diserahkan, akses, serta dokumentasi disepakati dalam ruang lingkup proyek. Kebutuhan di luar kesepakatan dibahas sebagai perubahan ruang lingkup.",
+  ],
+  [
+    "Apakah tersedia layanan maintenance?",
+    "Dukungan setelah peluncuran dapat dibahas sesuai kebutuhan dan kapasitas tim. Cakupan, periode, dan biaya maintenance perlu disepakati secara terpisah.",
+  ],
 ];
 ---
+
 <Layout>
   <div id="top"></div>
   <Header />
@@ -81,17 +82,37 @@ const faqs = [
     <section class="hero" aria-labelledby="hero-title">
       <div class="hero-backdrop hero-visual">
         <noscript>
-          <img class="scene-fallback" src="/images/direction-fallback.svg" width="660" height="640" alt="" />
+          <img
+            class="scene-fallback"
+            src="/images/direction-fallback.svg"
+            width="660"
+            height="640"
+            alt=""
+          />
         </noscript>
         <canvas id="direction-scene" aria-hidden="true"></canvas>
       </div>
       <div class="container hero-content">
-        <h1 id="hero-title">Different minds.<br /><span class="direction-word">One direction.</span><span class="headline-star" aria-hidden="true">↗</span></h1>
+        <h1 id="hero-title">
+          Different minds.<br /><span class="direction-word"
+            >One direction.</span
+          >
+          <span class="headline-star" aria-hidden="true">↗</span>
+        </h1>
         <div class="hero-main">
           <div class="hero-copy">
             <p class="hero-tagline">Beda Ayah, Satu Arah.</p>
-            <p class="hero-description">Tiga keahlian. Satu tim. Kami merancang dan membangun website yang membantu idemu menemukan bentuk terbaiknya.</p>
-            <div class="hero-actions"><a class="button button-blue" href="#contact">Mulai proyekmu <Icon /></a><a class="text-link" href="#work">Jelajahi karya <Icon name="arrow-right" size={18} /></a></div>
+            <p class="hero-description">
+              Tiga keahlian. Satu tim. Kami merancang dan membangun website yang
+              membantu idemu menemukan bentuk terbaiknya.
+            </p>
+            <div class="hero-actions">
+              <a class="button button-blue" href="#contact"
+                >Mulai proyekmu <Icon /></a
+              ><a class="text-link" href="#work"
+                >Jelajahi karya <Icon name="arrow-right" size={18} /></a
+              >
+            </div>
             <div class="hero-chips">
               <span class="hero-chip">Website Development</span>
               <span class="hero-chip">Web Applications</span>
@@ -104,47 +125,152 @@ const faqs = [
 
     <section id="work" class="section work-section">
       <div class="container">
-        <div class="section-heading-row"><h2>Karya nyata.<br /><span class="serif-word">Cerita berbeda.</span></h2><div><p>Dari ruang kelas hingga ruang aspirasi.<br />Produk digital yang kami bangun bersama.</p><a class="text-link" href="https://github.com/tiga-searah" target="_blank" rel="noopener noreferrer">Eksplorasi GitHub kami <Icon size={18} /></a></div></div>
-        <div class="work-grid">{projects.map((project, index) => <article class="project-card">
-          <a class={`project-art project-${project.theme}`} href={`/work/${project.slug}/`} aria-label={`Lihat studi kasus ${project.name}`}>
-            <span class="work-view"><Icon size={23} /></span>
-            <div class="project-desktop"><div class="browser-top" aria-hidden="true"><i></i><i></i><i></i><span>{new URL(project.live).hostname}</span></div><img src={project.image} width={project.width} height={project.height} alt={`Screenshot asli website ${project.name}`} loading="lazy" /></div>
-            <img class="project-mobile" src={project.mobileImage} width="380" height="844" alt="" loading="lazy" />
-          </a>
-          <div class="project-meta">
-            <div class="project-pill-row">
-              <span class={`project-category-chip chip-${project.theme}`}>{project.category}</span>
-              <span class="project-num-badge">#{index + 1}</span>
-            </div>
-            <h3><a href={`/work/${project.slug}/`}>{project.name} <Icon size={25} /></a></h3>
-            <p>{project.summary}</p>
-            <div class="project-links">
-              <a class="chip-link" href={project.live} target="_blank" rel="noopener noreferrer">Live website <Icon size={15} /></a>
-              <a class="chip-link" href={project.repo} target="_blank" rel="noopener noreferrer">Repository <Icon size={15} /></a>
-            </div>
+        <div class="section-heading-row">
+          <h2>
+            Karya nyata.<br /><span class="serif-word">Cerita berbeda.</span>
+          </h2><div>
+            <p>
+              Dari ruang kelas hingga ruang aspirasi.<br />Produk digital yang
+              kami bangun bersama.
+            </p><a
+              class="text-link"
+              href="https://github.com/tiga-searah"
+              target="_blank"
+              rel="noopener noreferrer"
+              >Eksplorasi GitHub kami <Icon size={18} /></a
+            >
           </div>
-        </article>)}</div>
-        <a class="work-preview studio-project" href="/work/tiga-searah/"><span><strong>Tiga Searah — Digital Studio</strong><span>Rumah digital kami. Astro, Three.js, dan satu arah.</span></span><span class="studio-project-link">Lihat studi kasus <Icon size={22} /></span></a>
+        </div>
+        <div class="work-grid">
+          {
+            projects.map((project, index) => (
+              <article class="project-card">
+                <a
+                  class={`project-art project-${project.theme}`}
+                  href={`/work/${project.slug}/`}
+                  aria-label={`Lihat studi kasus ${project.name}`}
+                >
+                  <span class="work-view">
+                    <Icon size={23} />
+                  </span>
+                  <div class="project-desktop">
+                    <>
+                      <div class="browser-top" aria-hidden="true">
+                        <>
+                          <i />
+                          <i />
+                          <i />
+                          <span>{new URL(project.live).hostname}</span>
+                        </>
+                      </div>
+                      <img
+                        src={project.image}
+                        width={project.width}
+                        height={project.height}
+                        alt={`Screenshot asli website ${project.name}`}
+                        loading="lazy"
+                      />
+                    </>
+                  </div>
+                  <img
+                    class="project-mobile"
+                    src={project.mobileImage}
+                    width="380"
+                    height="844"
+                    alt=""
+                    loading="lazy"
+                  />
+                </a>
+                <div class="project-meta">
+                  <div class="project-pill-row">
+                    <span class={`project-category-chip chip-${project.theme}`}>
+                      {project.category}
+                    </span>
+                    <span class="project-num-badge">#{index + 1}</span>
+                  </div>
+                  <h3>
+                    <a href={`/work/${project.slug}/`}>
+                      {project.name} <Icon size={25} />
+                    </a>
+                  </h3>
+                  <p>{project.summary}</p>
+                  <div class="project-links">
+                    <a
+                      class="chip-link"
+                      href={project.live}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      Live website <Icon size={15} />
+                    </a>
+                    <a
+                      class="chip-link"
+                      href={project.repo}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      Repository <Icon size={15} />
+                    </a>
+                  </div>
+                </div>
+              </article>
+            ))
+          }
+        </div>
+        <a class="work-preview studio-project" href="/work/tiga-searah/"
+          ><span
+            ><strong>Tiga Searah — Digital Studio</strong><span
+              >Rumah digital kami. Astro, Three.js, dan satu arah.</span
+            ></span
+          ><span class="studio-project-link"
+            >Lihat studi kasus <Icon size={22} /></span
+          ></a
+        >
       </div>
     </section>
 
     <section id="services" class="section services-section">
       <div class="container">
         <div class="services-layout">
-          <div class="section-intro"><h2>Dari ide.<br />Jadi <span class="serif-word">berarti.</span></h2><p>Website pertama, wajah baru bisnis, atau aplikasi untuk proses yang lebih baik. Kita mulai dari kebutuhanmu.</p><a class="text-link" href="#contact">Temukan solusi untukmu <Icon /></a><div class="service-small-mark" aria-hidden="true">↗</div></div>
+          <div class="section-intro">
+            <h2>
+              Dari ide.<br />Jadi <span class="serif-word">berarti.</span>
+            </h2><p>
+              Website pertama, wajah baru bisnis, atau aplikasi untuk proses
+              yang lebih baik. Kita mulai dari kebutuhanmu.
+            </p><a class="text-link" href="#contact"
+              >Temukan solusi untukmu <Icon /></a
+            ><div class="service-small-mark" aria-hidden="true">↗</div>
+          </div>
           <div class="service-list">
-            {services.map((service, index) => <details class="service-item" open={index === 0}>
-              <summary>
-                <span class="service-badge">{index + 1}</span>
-                <h3>{service.name}</h3>
-                <span class="service-toggle"><Icon name="plus" /></span>
-              </summary>
-              <div class="service-body">
-                <p>{service.description}</p>
-                <div class="service-tags">{service.tags.map((tag) => <span class="tag-chip">{tag}</span>)}</div>
-                <a class="service-select text-link" href="#contact" data-service={service.name}>Bahas kebutuhanmu <Icon size={17} /></a>
-              </div>
-            </details>)}
+            {
+              services.map((service, index) => (
+                <details class="service-item" open={index === 0}>
+                  <summary>
+                    <span class="service-badge">{index + 1}</span>
+                    <h3>{service.name}</h3>
+                    <span class="service-toggle">
+                      <Icon name="plus" />
+                    </span>
+                  </summary>
+                  <div class="service-body">
+                    <p>{service.description}</p>
+                    <div class="service-tags">
+                      {service.tags.map((tag) => (
+                        <span class="tag-chip">{tag}</span>
+                      ))}
+                    </div>
+                    <a
+                      class="service-select text-link"
+                      href="#contact"
+                      data-service={service.name}
+                    >
+                      Bahas kebutuhanmu <Icon size={17} />
+                    </a>
+                  </div>
+                </details>
+              ))
+            }
           </div>
         </div>
       </div>
@@ -152,35 +278,136 @@ const faqs = [
 
     <section id="about" class="section about-section">
       <div class="container">
-        <div class="about-top"><h2>Beda Ayah.<br /><span class="serif-word">Satu Arah.</span></h2><div class="about-copy"><img src="/images/tiga-searah.webp" width="104" height="104" alt="Logo resmi Tiga Searah" loading="lazy" /><p>Beda kepala, beda keahlian. Justru di situ kekuatan kami. Perencanaan, pengalaman pengguna, dan pengembangan bertemu dalam satu proses yang terhubung.</p><p class="about-tagline">Three roles. One collective.</p></div></div>
-        <div class="team-roles"><article><span class="role-symbol" aria-hidden="true">↗</span><h3>Project Management</h3><p>Merangkum kebutuhan, menentukan prioritas, dan menjaga komunikasi agar setiap langkah punya arah.</p></article><article><span class="role-symbol" aria-hidden="true">↗</span><h3>Frontend Development</h3><p>Mengubah ide menjadi antarmuka responsif dengan interaksi yang jelas dan nyaman digunakan.</p></article><article><span class="role-symbol" aria-hidden="true">↗</span><h3>Backend Development</h3><p>Menghubungkan data, API, dan logika sistem untuk menopang pengalaman digital yang andal.</p></article></div>
-        <div class="values-row"><p><Icon name="check" size={17} /> Alur kerja terkoordinasi</p><p><Icon name="check" size={17} /> Komunikasi langsung</p><p><Icon name="check" size={17} /> Fitur sesuai tujuan</p><p><Icon name="check" size={17} /> Kode mudah dirawat</p></div>
+        <div class="about-top">
+          <h2>
+            Beda Ayah.<br /><span class="serif-word">Satu Arah.</span>
+          </h2><div class="about-copy">
+            <img
+              src="/images/tiga-searah.webp"
+              width="104"
+              height="104"
+              alt="Logo resmi Tiga Searah"
+              loading="lazy"
+            /><p>
+              Beda kepala, beda keahlian. Justru di situ kekuatan kami.
+              Perencanaan, pengalaman pengguna, dan pengembangan bertemu dalam
+              satu proses yang terhubung.
+            </p><p class="about-tagline">Three roles. One collective.</p>
+          </div>
+        </div>
+        <div class="team-roles">
+          <article>
+            <span class="role-symbol" aria-hidden="true">↗</span><h3>
+              Project Management
+            </h3><p>
+              Merangkum kebutuhan, menentukan prioritas, dan menjaga komunikasi
+              agar setiap langkah punya arah.
+            </p>
+          </article><article>
+            <span class="role-symbol" aria-hidden="true">↗</span><h3>
+              Frontend Development
+            </h3><p>
+              Mengubah ide menjadi antarmuka responsif dengan interaksi yang
+              jelas dan nyaman digunakan.
+            </p>
+          </article><article>
+            <span class="role-symbol" aria-hidden="true">↗</span><h3>
+              Backend Development
+            </h3><p>
+              Menghubungkan data, API, dan logika sistem untuk menopang
+              pengalaman digital yang andal.
+            </p>
+          </article>
+        </div>
+        <div class="values-row">
+          <p><Icon name="check" size={17} /> Alur kerja terkoordinasi</p><p>
+            <Icon name="check" size={17} /> Komunikasi langsung
+          </p><p><Icon name="check" size={17} /> Fitur sesuai tujuan</p><p>
+            <Icon name="check" size={17} /> Kode mudah dirawat
+          </p>
+        </div>
       </div>
     </section>
 
     <section id="process" class="section process-section">
       <div class="container">
-        <div class="section-heading-row"><h2>Langkah jelas.<br /><span class="serif-word">Hasil selaras.</span></h2><p>Kamu tahu apa yang sedang dikerjakan.<br class="desktop-break" /> Kami tahu tujuan yang ingin dicapai.</p></div>
-        <ol class="process-list">{stages.map(([name, description], index) => <li class="process-card">
-          <div class="process-card-header">
-            <div class={`process-step-badge step-${index + 1}`}>
-              <span>0{index + 1}</span>
-            </div>
-            <span class="process-step-label">Fase 0{index + 1}</span>
-          </div>
-          <h3>{name}</h3>
-          <p>{description}</p>
-        </li>)}</ol>
+        <div class="section-heading-row">
+          <h2>
+            Langkah jelas.<br /><span class="serif-word">Hasil selaras.</span>
+          </h2><p>
+            Kamu tahu apa yang sedang dikerjakan.<br class="desktop-break" /> Kami
+            tahu tujuan yang ingin dicapai.
+          </p>
+        </div>
+        <ol class="process-list">
+          {
+            stages.map(([name, description], index) => (
+              <li class="process-card">
+                <div class="process-card-header">
+                  <div class={`process-step-badge step-${index + 1}`}>
+                    <span>0{index + 1}</span>
+                  </div>
+                  <span class="process-step-label">Fase 0{index + 1}</span>
+                </div>
+                <h3>{name}</h3>
+                <p>{description}</p>
+              </li>
+            ))
+          }
+        </ol>
       </div>
     </section>
 
     <section id="faq" class="section faq-section">
-      <div class="container faq-layout"><div class="section-intro"><h2>Masih<br /><span class="serif-word">penasaran?</span></h2><p>Beberapa hal yang mungkin ingin kamu tahu sebelum kita mulai.</p><a class="text-link" href="mailto:trio.searah@gmail.com">Tanya langsung <Icon /></a></div><div class="faq-list">{faqs.map(([question, answer]) => <details class="faq-item"><summary><h3>{question}</h3><span class="service-toggle"><Icon name="plus" size={18} /></span></summary><p>{answer}</p></details>)}</div></div>
+      <div class="container faq-layout">
+        <div class="section-intro">
+          <h2>Masih<br /><span class="serif-word">penasaran?</span></h2><p>
+            Beberapa hal yang mungkin ingin kamu tahu sebelum kita mulai.
+          </p><a class="text-link" href="mailto:trio.searah@gmail.com"
+            >Tanya langsung <Icon /></a
+          >
+        </div><div class="faq-list">
+          {
+            faqs.map(([question, answer]) => (
+              <details class="faq-item">
+                <>
+                  <summary>
+                    <>
+                      <h3>{question}</h3>
+                      <span class="service-toggle">
+                        <Icon name="plus" size={18} />
+                      </span>
+                    </>
+                  </summary>
+                  <p>{answer}</p>
+                </>
+              </details>
+            ))
+          }
+        </div>
+      </div>
     </section>
 
     <section id="contact" class="section contact-section">
       <div class="container">
-        <div class="contact-layout"><div class="contact-intro"><span class="contact-asterisk" aria-hidden="true"><Icon name="sparkles" size={40} /></span><h2>Idemu.<br />Langkah kita<br /><span class="serif-word">berikutnya.</span></h2><p>Ceritakan apa yang ingin kamu bangun. Kita cari arah yang tepat, bersama.</p><a class="contact-email" href="mailto:trio.searah@gmail.com">trio.searah@gmail.com <Icon size={20} /></a><span class="contact-small">Kirim pesan kapan saja. Tim kami siap merespons.</span></div><ContactForm client:visible /></div>
+        <div class="contact-layout">
+          <div class="contact-intro">
+            <span class="contact-asterisk" aria-hidden="true"
+              ><Icon name="sparkles" size={40} /></span
+            ><h2>
+              Idemu.<br />Langkah kita<br /><span class="serif-word"
+                >berikutnya.</span
+              >
+            </h2><p>
+              Ceritakan apa yang ingin kamu bangun. Kita cari arah yang tepat,
+              bersama.
+            </p><a class="contact-email" href="mailto:trio.searah@gmail.com"
+              >trio.searah@gmail.com <Icon size={20} /></a
+            ><span class="contact-small"
+              >Kirim pesan kapan saja. Tim kami siap merespons.</span
+            >
+          </div><ContactForm client:visible />
+        </div>
       </div>
     </section>
   </main>
@@ -188,26 +415,46 @@ const faqs = [
 </Layout>
 
 <script>
-  document.querySelectorAll<HTMLAnchorElement>('[data-service]').forEach((link) => {
-    link.addEventListener('click', () => {
-      const service = link.dataset.service;
-      const url = new URL(location.href);
-      url.searchParams.set('service', service || '');
-      history.replaceState(null, '', url);
-      window.dispatchEvent(new CustomEvent('select-service', { detail: service }));
+  document
+    .querySelectorAll<HTMLAnchorElement>("[data-service]")
+    .forEach((link) => {
+      link.addEventListener("click", () => {
+        const service = link.dataset.service;
+        const url = new URL(location.href);
+        url.searchParams.set("service", service || "");
+        history.replaceState(null, "", url);
+        window.dispatchEvent(
+          new CustomEvent("select-service", { detail: service }),
+        );
+      });
     });
-  });
-  const visual = document.querySelector<HTMLElement>('.hero-visual');
-  const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)');
-  const connection = (navigator as Navigator & { connection?: { saveData?: boolean } }).connection;
-  const deviceMemory = (navigator as Navigator & { deviceMemory?: number }).deviceMemory;
-  if (visual && matchMedia('(min-width: 768px)').matches && !reducedMotion.matches && !connection?.saveData && (!deviceMemory || deviceMemory > 2)) {
-    const observer = new IntersectionObserver(([entry]) => {
-      if (entry.isIntersecting) {
-        observer.disconnect();
-        import('../scripts/direction-scene').then(({ mountScene }) => mountScene(visual)).catch(() => { /* Static artwork remains available. */ });
-      }
-    }, { rootMargin: '100px' });
+  const visual = document.querySelector<HTMLElement>(".hero-visual");
+  const reducedMotion = matchMedia("(prefers-reduced-motion: reduce)");
+  const connection = (
+    navigator as Navigator & { connection?: { saveData?: boolean } }
+  ).connection;
+  const deviceMemory = (navigator as Navigator & { deviceMemory?: number })
+    .deviceMemory;
+  if (
+    visual &&
+    matchMedia("(min-width: 768px)").matches &&
+    !reducedMotion.matches &&
+    !connection?.saveData &&
+    (!deviceMemory || deviceMemory > 2)
+  ) {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          observer.disconnect();
+          import("../scripts/direction-scene")
+            .then(({ mountScene }) => mountScene(visual))
+            .catch(() => {
+              /* Static artwork remains available. */
+            });
+        }
+      },
+      { rootMargin: "100px" },
+    );
     observer.observe(visual);
   }
 </script>

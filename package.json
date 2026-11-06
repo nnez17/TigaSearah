@@ -5,13 +5,13 @@
 	"type": "module",
 	"packageManager": "bun@1.4.3",
 	"workspaces": [
-		"apps/*"
+		"apps/*",
+		"packages/*"
 	],
 	"scripts": {
-		"dev": "bun run --parallel --filter '@tiga-searah/*' dev",
-		"build": "bun run --filter @tiga-searah/web build && bun run --filter @tiga-searah/api build",
-		"start": "bun apps/api/.output/server/index.mjs",
-		"check": "bun run --filter @tiga-searah/web check && tsc --noEmit -p apps/api/tsconfig.json",
+		"dev": "bun scripts/dev.ts",
+		"build": "turbo build",
+		"check": "turbo check",
 		"test": "vitest run",
 		"test:e2e": "playwright test",
 		"format": "bunx biome format --write",
@@ -24,9 +24,11 @@
 		"@axe-core/playwright": "^4.13.0",
 		"@biomejs/biome": "2.5.15",
 		"@playwright/test": "^1.55.0",
+		"@types/bun": "^1.4.4",
 		"@types/node": "^22.18.0",
 		"gifenc": "^1.0.3",
 		"lighthouse": "^13.5.0",
+		"turbo": "^2.5.4",
 		"typescript": "^5.9.2",
 		"vitest": "^4.1.11"
 	},

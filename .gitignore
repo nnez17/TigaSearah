@@ -3,6 +3,7 @@ dist/
 .astro/
 .nitro/
 .output/
+.turbo/
 .env
 .env.*
 !.env.example

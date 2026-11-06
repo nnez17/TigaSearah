@@ -1,5 +1,5 @@
 import { type SubmitEvent, useEffect, useRef, useState } from "react";
-import { contactSchema, services } from "../../../../shared/contact";
+import { contactSchema, services } from "@tiga-searah/shared/contact";
 
 type Errors = Partial<Record<string, string>>;
 export default function ContactForm() {

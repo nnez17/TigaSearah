@@ -3,8 +3,13 @@
 	"compilerOptions": {
 		"jsx": "react-jsx",
 		"jsxImportSource": "react",
-		"types": ["vite/client"]
+		"types": ["vite/client"],
+		"baseUrl": ".",
+		"paths": {
+			"@tiga-searah/shared/*": ["../../packages/shared/*"],
+			"@tiga-searah/shared": ["../../packages/shared/contact.ts"]
+		}
 	},
-	"include": [".astro/types.d.ts", "**/*", "../../shared/**/*"],
+	"include": [".astro/types.d.ts", "**/*"],
 	"exclude": ["dist"]
 }

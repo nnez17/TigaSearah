@@ -1,0 +1,12 @@
+{
+	"name": "@tiga-searah/shared",
+	"version": "1.0.0",
+	"private": true,
+	"type": "module",
+	"main": "./contact.ts",
+	"types": "./contact.ts",
+	"exports": {
+		"./contact": "./contact.ts",
+		".": "./contact.ts"
+	}
+}

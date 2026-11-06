@@ -7,22 +7,22 @@ import "@fontsource/plus-jakarta-sans/latin-800.css";
 import "../styles/global.css";
 
 interface Props {
-	title?: string;
-	description?: string;
-	noindex?: boolean;
+  title?: string;
+  description?: string;
+  noindex?: boolean;
 }
 const {
-	title = "Tiga Searah - Website Development",
-	description = "Tiga Searah membantu bisnis dan organisasi membangun website, aplikasi web, serta backend dan integrasi API. Tiga keahlian, satu arah. Mulai proyekmu bersama kami.",
-	noindex = false,
+  title = "Tiga Searah - Website Development",
+  description = "Tiga Searah membantu bisnis dan organisasi membangun website, aplikasi web, serta backend dan integrasi API. Tiga keahlian, satu arah. Mulai proyekmu bersama kami.",
+  noindex = false,
 } = Astro.props;
 const productionSite =
-	Astro.site && !["localhost", "127.0.0.1"].includes(Astro.site.hostname)
-		? Astro.site
-		: undefined;
+  Astro.site && !["localhost", "127.0.0.1"].includes(Astro.site.hostname)
+    ? Astro.site
+    : undefined;
 const canonical = productionSite
-	? new URL(Astro.url.pathname, productionSite).href
-	: undefined;
+  ? new URL(Astro.url.pathname, productionSite).href
+  : undefined;
 ---
 
 <!doctype html>

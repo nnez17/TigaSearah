@@ -7,7 +7,12 @@
 		"noEmit": true,
 		"skipLibCheck": true,
 		"types": ["node"],
-		"lib": ["ES2022", "DOM"]
+		"lib": ["ES2022", "DOM"],
+		"baseUrl": ".",
+		"paths": {
+			"@tiga-searah/shared/*": ["../../packages/shared/*"],
+			"@tiga-searah/shared": ["../../packages/shared/contact.ts"]
+		}
 	},
-	"include": ["server/**/*.ts", "nitro.config.ts", "../../shared/**/*.ts"]
+	"include": ["server/**/*.ts", "nitro.config.ts"]
 }
