@@ -2,23 +2,45 @@
 import Icon from "./Icon.astro";
 ---
 
-<footer class="site-footer">
-  <div class="container footer-top">
-    <a class="brand" href="/" aria-label="Tiga Searah — beranda">
+<footer
+  class="site-footer pt-9 border-t border-line bg-[#0b0d13] [.light-theme_&]:bg-[#f8fafc] transition-colors"
+>
+  <div
+    class="container flex flex-col sm:flex-row items-center justify-between gap-6 pb-7"
+  >
+    <a
+      class="brand inline-flex items-center gap-2.5 font-display text-[19px] font-semibold tracking-tight whitespace-nowrap text-text"
+      href="/"
+      aria-label="Tiga Searah — beranda"
+    >
       <img
         src="/images/tiga-searah.webp"
         width="52"
         height="52"
         alt=""
         loading="lazy"
-      /><span>Tiga Searah<span class="brand-dot">●</span></span></a
+        class="w-11 h-11 object-contain"
+      /><span
+        >Tiga Searah<span class="text-blue text-[9px] align-top ml-1">●</span
+        ></span
+      ></a
     >
-    <p>Beda Ayah, Satu Arah.</p>
-    <a class="back-top mono" href="#top">KEMBALI KE ATAS <Icon size={16} /></a>
+    <p class="font-display text-base sm:text-lg text-muted tracking-tight">
+      Beda Ayah, Satu Arah.
+    </p>
+    <a
+      class="back-top mono text-[8px] sm:text-[9px] tracking-widest text-muted hover:text-blue flex items-center gap-3 transition-colors"
+      href="#top">KEMBALI KE ATAS <Icon size={16} /></a
+    >
   </div>
-  <div class="container footer-bottom">
+  <div
+    class="container border-t border-line/60 py-5 flex flex-col sm:flex-row items-center justify-between gap-4 text-muted text-[10px] sm:text-[11px]"
+  >
     <span>© {new Date().getFullYear()} Tiga Searah</span><span
-      >Different minds. Thoughtfully aligned.</span
-    ><a href="/privacy-policy/">Kebijakan privasi</a>
+      class="text-center">Different minds. Thoughtfully aligned.</span
+    ><a
+      class="hover:text-blue transition-colors underline sm:no-underline"
+      href="/privacy-policy/">Kebijakan privasi</a
+    >
   </div>
 </footer>

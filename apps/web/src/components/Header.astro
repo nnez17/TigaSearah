@@ -13,29 +13,56 @@ const home = isHome ? "" : "/";
 const getHref = (id: string) => (id.startsWith("/") ? id : `${home}#${id}`);
 ---
 
-<header class="site-header">
-  <div class="container header-inner">
-    <a class="brand" href="/" aria-label="Tiga Searah — beranda">
+<header
+  class="site-header sticky top-0 z-40 bg-transparent border-b border-transparent [&.is-pinned]:bg-[var(--bg)]/85 [&.is-pinned]:backdrop-blur-md [&.is-pinned]:border-[var(--line)]/40 [&.is-pinned]:shadow-[0_2px_10px_rgba(0,0,0,0.04)] [&.is-menu-open]:bg-[var(--bg)]/92 [&.is-menu-open]:backdrop-blur-md [&:has(#mobile-nav:not([hidden]))]:bg-[var(--bg)]/92 [&:has(#mobile-nav:not([hidden]))]:backdrop-blur-md [.light-theme_&.is-pinned]:shadow-[0_2px_10px_rgba(0,0,0,0.02)]"
+>
+  <div
+    class="container flex items-center justify-between min-h-[76px] md:min-h-[88px] gap-7"
+  >
+    <a
+      class="brand inline-flex items-center gap-2.5 font-display text-[19px] font-semibold tracking-tight whitespace-nowrap text-text"
+      href="/"
+      aria-label="Tiga Searah — beranda"
+    >
       <img
         src="/images/tiga-searah.webp"
         alt=""
         width="52"
         height="52"
         fetchpriority="high"
+        class="w-11 h-11 object-contain"
       />
-      <span>Tiga Searah<span class="brand-dot">●</span></span>
+      <span
+        >Tiga Searah<span class="text-blue text-[9px] align-top ml-1">●</span
+        ></span
+      >
     </a>
-    <nav class="desktop-nav" aria-label="Navigasi utama">
-      {links.map(([label, id]) => <a href={getHref(id)}>{label}</a>)}
+    <nav
+      class="desktop-nav hidden md:flex items-center gap-7 px-6.5 py-2.5 border border-line rounded-full bg-white/[0.02] [.light-theme_&]:bg-slate-50"
+      aria-label="Navigasi utama"
+    >
+      {
+        links.map(([label, id]) => (
+          <a
+            class="text-slate-300 hover:text-white [.light-theme_&]:text-slate-600 [.light-theme_&]:hover:text-slate-900 text-[11px] transition-colors"
+            href={getHref(id)}
+          >
+            {label}
+          </a>
+        ))
+      }
     </nav>
-    <div class="header-actions">
+    <div class="flex items-center gap-3.5">
       <button
-        class="theme-toggle"
+        class="theme-toggle inline-flex items-center justify-center w-[38px] h-[38px] rounded-full border border-line bg-white/[0.04] text-text hover:border-blue hover:bg-white/[0.09] transition-colors p-0 cursor-pointer"
         type="button"
         aria-label="Ganti mode terang/gelap"
         title="Ganti mode tampilan"
       >
-        <span class="icon-sun" aria-hidden="true">
+        <span
+          class="icon-sun flex text-accent [.light-theme_&]:hidden"
+          aria-hidden="true"
+        >
           <svg
             width="18"
             height="18"
@@ -52,7 +79,10 @@ const getHref = (id: string) => (id.startsWith("/") ? id : `${home}#${id}`);
             ></path>
           </svg>
         </span>
-        <span class="icon-moon" aria-hidden="true">
+        <span
+          class="icon-moon hidden text-blue [.light-theme_&]:flex"
+          aria-hidden="true"
+        >
           <svg
             width="18"
             height="18"
@@ -67,44 +97,57 @@ const getHref = (id: string) => (id.startsWith("/") ? id : `${home}#${id}`);
           </svg>
         </span>
       </button>
-      <a class="nav-cta" href={`${home}#contact`}
-        >Mulai proyek <Icon size={17} /></a
+      <a
+        class="nav-cta hidden sm:inline-flex items-center gap-6 border border-[#69727f] hover:border-text rounded-full px-5 py-2.5 text-[11px] text-text hover:bg-[#f4f5f1] hover:text-[#111318] [.light-theme_&]:hover:bg-[#111318] [.light-theme_&]:hover:text-white transition-all"
+        href={`${home}#contact`}>Mulai proyek <Icon size={17} /></a
       >
       <button
-        class="menu-toggle"
+        class="menu-toggle md:hidden border-0 bg-transparent p-2 text-text cursor-pointer"
         aria-label="Buka menu"
         aria-expanded="false"
         aria-controls="mobile-nav"
-        ><span class="menu-open"><Icon name="menu" size={24} /></span><span
-          class="menu-close"><Icon name="close" size={24} /></span
+        ><span
+          class="menu-open block [.menu-toggle[aria-expanded='true']_&]:hidden"
+          ><Icon name="menu" size={24} /></span
+        ><span
+          class="menu-close hidden [.menu-toggle[aria-expanded='true']_&]:block"
+          ><Icon name="close" size={24} /></span
         ></button
       >
     </div>
   </div>
   <nav
     id="mobile-nav"
-    class="mobile-nav container"
+    class="mobile-nav container md:hidden max-h-[calc(100svh-76px)] overflow-y-auto overscroll-contain pb-6"
     aria-label="Navigasi seluler"
     hidden
   >
     {
       links.map(([label, id], i) => (
-        <a href={getHref(id)}>
-          <span class="mono">0{i + 1}</span>
+        <a
+          class="flex items-center gap-3.5 sm:gap-5 py-3 sm:py-3.5 font-display text-lg sm:text-[22px] border-t border-line text-text hover:text-blue transition-colors"
+          href={getHref(id)}
+        >
+          <span class="mono text-[10px] text-blue">0{i + 1}</span>
           {label}
-          <Icon />
+          <Icon class="ml-auto text-blue" />
         </a>
       ))
     }
     <button
-      class="mobile-theme-row theme-toggle"
+      class="mobile-theme-row theme-toggle flex items-center gap-3.5 sm:gap-5 py-3 sm:py-3.5 font-display text-sm sm:text-base border-t border-line w-full bg-transparent text-text text-left cursor-pointer border-x-0 border-b-0 rounded-none p-0"
       type="button"
       aria-label="Ganti mode tampilan"
     >
-      <span class="mono">TEMA</span>
-      <span class="mobile-theme-text">Ganti Mode Tampilan</span>
-      <span class="mobile-theme-icons">
-        <span class="icon-sun" aria-hidden="true">
+      <span class="mono text-[10px] text-blue">TEMA</span>
+      <span class="mobile-theme-text text-sm sm:text-[15px] flex-1"
+        >Ganti Mode Tampilan</span
+      >
+      <span class="mobile-theme-icons flex items-center">
+        <span
+          class="icon-sun flex text-accent [.light-theme_&]:hidden"
+          aria-hidden="true"
+        >
           <svg
             width="20"
             height="20"
@@ -119,7 +162,10 @@ const getHref = (id: string) => (id.startsWith("/") ? id : `${home}#${id}`);
             ></path>
           </svg>
         </span>
-        <span class="icon-moon" aria-hidden="true">
+        <span
+          class="icon-moon hidden text-blue [.light-theme_&]:flex"
+          aria-hidden="true"
+        >
           <svg
             width="20"
             height="20"
@@ -133,7 +179,11 @@ const getHref = (id: string) => (id.startsWith("/") ? id : `${home}#${id}`);
         </span>
       </span>
     </button>
-    <a href={`${home}#contact`} class="mobile-start">Mulai proyek <Icon /></a>
+    <a
+      href={`${home}#contact`}
+      class="mobile-start flex items-center justify-between gap-3 py-3 sm:py-3.5 font-display text-base sm:text-[17px] border-t border-line text-blue font-semibold"
+      >Mulai proyek <Icon class="text-blue" /></a
+    >
   </nav>
 </header>
 <script>
@@ -169,8 +219,18 @@ const getHref = (id: string) => (id.startsWith("/") ? id : `${home}#${id}`);
     if (event.matches) closeMenu();
   });
   // The bar is transparent over the hero and only gains a background once the page has
-  // scrolled past it, so the trident reads through it at rest.
-  const pinned = () => header?.classList.toggle("is-pinned", scrollY > 24);
-  pinned();
-  addEventListener("scroll", pinned, { passive: true });
+  // scrolled past it. Hysteresis prevents flickering when hovering near the boundary.
+  let isPinned = false;
+  const updatePinned = () => {
+    const y = window.scrollY;
+    if (!isPinned && y > 24) {
+      isPinned = true;
+      header?.classList.add("is-pinned");
+    } else if (isPinned && y < 10) {
+      isPinned = false;
+      header?.classList.remove("is-pinned");
+    }
+  };
+  updatePinned();
+  window.addEventListener("scroll", updatePinned, { passive: true });
 </script>

@@ -6,16 +6,33 @@ import Layout from "../layouts/Layout.astro";
 ---
 
 <Layout title="Halaman Tidak Ditemukan — Tiga Searah" noindex>
-  <div id="top"></div><Header /><main id="main" class="container document-page">
-    <div class="case-eyebrow-row">
-      <span class="badge-pill">404</span><span class="badge-category"
-        >A Different Direction</span>
-    </div><h1>Sepertinya<br /><span class="serif-word">beda arah.</span></h1><p
-      class="document-lead"
-    >
-      Halaman yang kamu cari tidak ditemukan. Kita kembali ke jalur yang tepat.
-    </p><div class="document-actions">
-      <a class="button button-blue" href="/">Kembali ke beranda <Icon /></a>
+  <div id="top"></div>
+  <Header />
+  <main id="main" class="container py-16 md:py-24 min-h-[70vh]">
+    <div class="flex items-center gap-2.5 mb-5">
+      <span
+        class="inline-flex items-center px-3 py-1 rounded-full bg-blue-600 text-white text-[11px] font-extrabold shadow-[0_2px_0_#1d4ed8]"
+        >404</span
+      >
+      <span
+        class="inline-flex items-center px-3 py-1 rounded-full bg-white/5 border border-white/10 text-slate-300 [.light-theme_&]:text-slate-700 [.light-theme_&]:border-slate-300 [.light-theme_&]:bg-slate-100 text-[11px] font-bold"
+        >A Different Direction</span
+      >
     </div>
-  </main><Footer />
+    <h1
+      class="text-3xl sm:text-4xl md:text-5xl font-bold font-display tracking-tight leading-tight"
+    >
+      Sepertinya<br /><span class="serif-word text-blue">beda arah.</span>
+    </h1>
+    <p class="max-w-[690px] text-muted text-base leading-relaxed mt-6">
+      Halaman yang kamu cari tidak ditemukan. Kita kembali ke jalur yang tepat.
+    </p>
+    <div class="flex flex-wrap gap-6 items-center mt-7">
+      <a
+        class="inline-flex items-center justify-between gap-5 min-h-[50px] px-6 py-3 text-[13px] font-bold rounded-2xl select-none cursor-pointer text-white bg-blue-600 border-2 border-blue-500 shadow-[0_4px_0_#1d4ed8,0_6px_18px_rgba(37,99,235,0.35)] hover:bg-blue-500 hover:border-blue-400 active:translate-y-[3px] active:shadow-[0_1px_0_#1d4ed8] transition-all"
+        href="/">Kembali ke beranda <Icon /></a
+      >
+    </div>
+  </main>
+  <Footer />
 </Layout>

@@ -19,38 +19,38 @@ const { project } = Astro.props;
   description={project.summary}
 >
   <div id="top"></div><Header />
-  <main id="main" class="document-page container">
-    <a class="text-link case-back" href="/#work"
+  <main id="main" class="document-page container py-16 md:py-24 min-h-[70vh]">
+    <a class="text-link case-back inline-flex items-center gap-2.5 mb-9 text-muted hover:text-blue [&_svg]:-rotate-180 transition-colors" href="/#work"
       ><Icon name="arrow-right" size={18} /> Kembali ke karya</a
     >
-    <div class="case-eyebrow-row">
-      <span class="badge-pill">Karya Pilihan</span>
-      <span class="badge-category">{project.category}</span>
+    <div class="case-eyebrow-row flex items-center gap-2.5 mb-5">
+      <span class="inline-flex items-center px-3 py-1 rounded-full bg-blue-600 text-white text-[11px] font-extrabold shadow-[0_2px_0_#1d4ed8]">Karya Pilihan</span>
+      <span class="inline-flex items-center px-3 py-1 rounded-full bg-white/5 border border-white/10 text-slate-300 [.light-theme_&]:text-slate-700 [.light-theme_&]:border-slate-300 [.light-theme_&]:bg-slate-100 text-[11px] font-bold">{project.category}</span>
     </div>
-    <h1>{project.name}<span class="case-title-dot">.</span></h1>
-    <p class="document-lead">{project.summary}</p>
-    <div class="document-actions">
+    <h1 class="text-3xl sm:text-4xl md:text-5xl font-bold font-display tracking-tight leading-tight">{project.name}<span class="case-title-dot text-blue">.</span></h1>
+    <p class="document-lead max-w-[690px] text-muted text-base leading-relaxed mt-6">{project.summary}</p>
+    <div class="document-actions flex flex-wrap gap-6 items-center mt-8">
       <a
-        class="button button-blue"
+        class="inline-flex items-center justify-between gap-5 min-h-[50px] px-6 py-3 text-[13px] font-bold rounded-2xl select-none cursor-pointer text-white bg-blue-600 border-2 border-blue-500 shadow-[0_4px_0_#1d4ed8,0_6px_18px_rgba(37,99,235,0.35)] hover:bg-blue-500 hover:border-blue-400 active:translate-y-[3px] active:shadow-[0_1px_0_#1d4ed8] transition-all"
         href={project.live}
         target="_blank"
         rel="noopener noreferrer">Kunjungi website <Icon /></a
       ><a
-        class="text-link"
+        class="inline-flex items-center gap-2.5 text-[13px] font-bold text-slate-300 hover:text-blue-400 [.light-theme_&]:text-slate-600 [.light-theme_&]:hover:text-blue-600 transition-colors"
         href={project.repo}
         target="_blank"
         rel="noopener noreferrer">Lihat repositori <Icon size={18} /></a
       >
     </div>
-    <div class={`case-showcase project-${project.theme}`}>
+    <div class={`case-showcase project-${project.theme} relative mt-11 p-7 sm:p-14 md:p-16 rounded-[20px] overflow-hidden`}>
       <img
-        class="case-desktop"
+        class="case-desktop w-[94%] rounded-lg shadow-[0_18px_50px_rgba(0,0,0,0.3)] border border-white/10 [.light-theme_&]:border-slate-200 [.light-theme_&]:shadow-xl"
         src={project.image}
         width={project.width}
         height={project.height}
         alt={`Screenshot asli halaman utama ${project.name}`}
       /><img
-        class="case-mobile"
+        class="case-mobile absolute w-[22%] sm:w-[18%] right-[4%] bottom-6 rounded-2xl sm:rounded-[20px] border-[4px] sm:border-[5px] border-[#111318] [.light-theme_&]:border-slate-900 shadow-[0_18px_50px_rgba(0,0,0,0.5)]"
         src={project.mobileImage}
         width="380"
         height="844"
@@ -58,15 +58,15 @@ const { project } = Astro.props;
         loading="lazy"
       />
     </div>
-    <div class="case-story">
+    <div class="case-story grid grid-cols-1 md:grid-cols-[0.8fr_1.2fr] gap-12 md:gap-20 py-16">
       <div class="case-sidebar">
-        <span class="mono">PROJECT NOTES</span>
-        <h2>Ide, proses,<br />dan hasilnya.</h2><p>
+        <span class="mono text-muted">PROJECT NOTES</span>
+        <h2 class="text-2xl sm:text-[28px] font-bold font-display mt-4.5 text-text">Ide, proses,<br />dan hasilnya.</h2><p class="text-muted text-xs sm:text-[13px] leading-relaxed mt-5">
           Proyek publik Tiga Searah.<br />Ditinjau 15 Oktober 2026.
-        </p><div class="work-tags">
-          {project.tech.map((tech) => <span>{tech}</span>)}
+        </p><div class="work-tags flex flex-wrap gap-2 mt-6">
+          {project.tech.map((tech) => <span class="px-3 py-1 rounded-full border border-line text-slate-300 [.light-theme_&]:text-slate-700 [.light-theme_&]:border-slate-300 text-[11px] font-medium bg-white/[0.02] [.light-theme_&]:bg-white">{tech}</span>)}
         </div>
-      </div><div class="document-content">
+      </div><div class="document-content space-y-4 text-slate-300 [.light-theme_&]:text-slate-700 text-sm leading-relaxed [&_h2]:text-xl [&_h2]:font-bold [&_h2]:font-display [&_h2]:mt-8 [&_h2:first-child]:mt-0 [&_h2]:mb-3 [&_h2]:text-text">
         <h2>Tantangan</h2><p>{project.problem}</p><h2>Solusi</h2><p>
           {project.solution}
         </p><h2>Kontribusi Tiga Searah</h2><p>{project.contribution}</p><h2>
@@ -77,10 +77,10 @@ const { project } = Astro.props;
         </p>
       </div>
     </div>
-    <div class="document-actions">
-      <a class="button button-blue" href="/#contact"
+    <div class="document-actions flex flex-wrap gap-6 items-center mt-8">
+      <a class="inline-flex items-center justify-between gap-5 min-h-[50px] px-6 py-3 text-[13px] font-bold rounded-2xl select-none cursor-pointer text-white bg-blue-600 border-2 border-blue-500 shadow-[0_4px_0_#1d4ed8,0_6px_18px_rgba(37,99,235,0.35)] hover:bg-blue-500 hover:border-blue-400 active:translate-y-[3px] active:shadow-[0_1px_0_#1d4ed8] transition-all" href="/#contact"
         >Punya kebutuhan serupa? <Icon /></a
-      ><a class="text-link" href="/#work">Lihat karya lainnya <Icon /></a>
+      ><a class="inline-flex items-center gap-2.5 text-[13px] font-bold text-slate-300 hover:text-blue-400 [.light-theme_&]:text-slate-600 [.light-theme_&]:hover:text-blue-600 transition-colors" href="/#work">Lihat karya lainnya <Icon /></a>
     </div>
   </main><Footer />
 </Layout>

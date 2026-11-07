@@ -95,14 +95,19 @@ export default function ContactForm() {
 	});
 	const error = (field: string) =>
 		errors[field] ? (
-			<span className="field-error" id={`${field}-error`}>
+			<span className="field-error text-rose-300 text-[10px] mt-1.5 block" id={`${field}-error`}>
 				{errors[field]}
 			</span>
 		) : null;
 
+	const inputClass =
+		"w-full border-0 border-b border-white/15 [.light-theme_&]:border-slate-300 rounded-none bg-transparent text-text px-0.5 pt-2.5 pb-3 text-xs min-h-[44px] transition-colors focus:outline-none focus:border-b-blue-400 focus:shadow-[0_1px_0_#60a5fa] placeholder:text-slate-500 aria-[invalid=true]:border-rose-400";
+	const labelClass =
+		"text-[11px] mb-2.5 text-slate-300 [.light-theme_&]:text-slate-700 font-semibold";
+
 	return (
 		<form
-			className="contact-form"
+			className="contact-form relative bg-white/[0.02] border-2 border-white/[0.08] [.light-theme_&]:bg-white [.light-theme_&]:border-slate-200 rounded-[20px] p-6 sm:p-9 backdrop-blur-md shadow-[0_8px_0_rgba(0,0,0,0.3)] [.light-theme_&]:shadow-lg"
 			method="post"
 			action="/api/contact"
 			onSubmit={submit}
@@ -110,13 +115,13 @@ export default function ContactForm() {
 			aria-label="Formulir permintaan proyek"
 			aria-busy={status === "submitting"}
 		>
-			<p className="form-heading">
-				Mulai dari sebuah percakapan.<span>* Wajib diisi</span>
+			<p className="form-heading flex items-center justify-between gap-4 font-display text-[17px] font-bold tracking-tight mb-7 text-text">
+				Mulai dari sebuah percakapan.<span className="font-sans text-[9px] font-normal text-muted tracking-normal">* Wajib diisi</span>
 			</p>
-			<div className="form-grid">
-				<div className="form-field">
-					<label htmlFor="name">
-						Nama kamu <span>*</span>
+			<div className="form-grid grid grid-cols-1 sm:grid-cols-2 gap-6 sm:gap-x-5.5 sm:gap-y-6">
+				<div className="form-field flex flex-col min-w-0">
+					<label htmlFor="name" className={labelClass}>
+						Nama kamu <span className="text-blue">*</span>
 					</label>
 					<input
 						id="name"
@@ -125,13 +130,14 @@ export default function ContactForm() {
 						placeholder="Nama lengkap"
 						required
 						maxLength={100}
+						className={inputClass}
 						{...errorProps("name")}
 					/>
 					{error("name")}
 				</div>
-				<div className="form-field">
-					<label htmlFor="email">
-						Email <span>*</span>
+				<div className="form-field flex flex-col min-w-0">
+					<label htmlFor="email" className={labelClass}>
+						Email <span className="text-blue">*</span>
 					</label>
 					<input
 						id="email"
@@ -141,13 +147,14 @@ export default function ContactForm() {
 						placeholder="kamu@email.com"
 						required
 						maxLength={254}
+						className={inputClass}
 						{...errorProps("email")}
 					/>
 					{error("email")}
 				</div>
-				<div className="form-field">
-					<label htmlFor="company">
-						Bisnis / organisasi <span className="optional">Opsional</span>
+				<div className="form-field flex flex-col min-w-0">
+					<label htmlFor="company" className={labelClass}>
+						Bisnis / organisasi <span className="text-[8px] text-muted ml-1.5">Opsional</span>
 					</label>
 					<input
 						id="company"
@@ -155,13 +162,14 @@ export default function ContactForm() {
 						autoComplete="organization"
 						placeholder="Nama bisnis atau organisasi"
 						maxLength={150}
+						className={inputClass}
 						{...errorProps("company")}
 					/>
 					{error("company")}
 				</div>
-				<div className="form-field">
-					<label htmlFor="service">
-						Yang kamu butuhkan <span>*</span>
+				<div className="form-field flex flex-col min-w-0">
+					<label htmlFor="service" className={labelClass}>
+						Yang kamu butuhkan <span className="text-blue">*</span>
 					</label>
 					<select
 						id="service"
@@ -169,6 +177,7 @@ export default function ContactForm() {
 						required
 						value={service}
 						onChange={(event) => setService(event.target.value)}
+						className="w-full border-0 border-b border-white/15 [.light-theme_&]:border-slate-300 rounded-none bg-transparent text-slate-300 [.light-theme_&]:text-slate-700 px-0.5 pt-2.5 pb-3 pr-6 text-xs min-h-[44px] transition-colors focus:outline-none focus:border-b-blue-400 focus:shadow-[0_1px_0_#60a5fa] aria-[invalid=true]:border-rose-400 [&_option]:bg-[#111318] [&_option]:text-[#f4f5f1]"
 						{...errorProps("service")}
 					>
 						<option value="" disabled>
@@ -184,35 +193,37 @@ export default function ContactForm() {
 					</select>
 					{error("service")}
 				</div>
-				<div className="form-field">
-					<label htmlFor="budget">
-						Gambaran anggaran <span className="optional">Opsional</span>
+				<div className="form-field flex flex-col min-w-0">
+					<label htmlFor="budget" className={labelClass}>
+						Gambaran anggaran <span className="text-[8px] text-muted ml-1.5">Opsional</span>
 					</label>
 					<input
 						id="budget"
 						name="budget"
 						placeholder="Boleh kita diskusikan dulu"
 						maxLength={100}
+						className={inputClass}
 						{...errorProps("budget")}
 					/>
 					{error("budget")}
 				</div>
-				<div className="form-field">
-					<label htmlFor="timeline">
-						Target waktu <span className="optional">Opsional</span>
+				<div className="form-field flex flex-col min-w-0">
+					<label htmlFor="timeline" className={labelClass}>
+						Target waktu <span className="text-[8px] text-muted ml-1.5">Opsional</span>
 					</label>
 					<input
 						id="timeline"
 						name="timeline"
 						placeholder="Kapan ingin mulai atau selesai?"
 						maxLength={150}
+						className={inputClass}
 						{...errorProps("timeline")}
 					/>
 					{error("timeline")}
 				</div>
-				<div className="form-field full-width">
-					<label htmlFor="message">
-						Ceritakan idemu <span>*</span>
+				<div className="form-field flex flex-col min-w-0 sm:col-span-2">
+					<label htmlFor="message" className={labelClass}>
+						Ceritakan idemu <span className="text-blue">*</span>
 					</label>
 					<textarea
 						id="message"
@@ -222,30 +233,32 @@ export default function ContactForm() {
 						required
 						minLength={20}
 						maxLength={5000}
+						className="w-full border-0 border-b border-white/15 [.light-theme_&]:border-slate-300 rounded-none bg-transparent text-text px-0.5 pt-2.5 pb-3 text-xs min-h-[110px] resize-y transition-colors focus:outline-none focus:border-b-blue-400 focus:shadow-[0_1px_0_#60a5fa] placeholder:text-slate-500 aria-[invalid=true]:border-rose-400"
 						{...errorProps("message")}
 					/>
 					{error("message")}
 				</div>
 			</div>
-			<div className="honeypot" aria-hidden="true">
+			<div className="honeypot absolute w-px h-px p-0 -m-px overflow-hidden clip-[rect(0,0,0,0)] whitespace-nowrap border-0 pointer-events-none opacity-0" aria-hidden="true">
 				<label htmlFor="website">Website</label>
 				<input id="website" name="website" tabIndex={-1} autoComplete="off" />
 			</div>
-			<label className="consent-label">
+			<label className="consent-label flex items-start gap-2.5 mt-5.5 text-muted text-[10px] leading-relaxed cursor-pointer">
 				<input
 					name="consent"
 					type="checkbox"
 					required
+					className="w-4 h-4 accent-blue-500 shrink-0 mt-0.5"
 					{...errorProps("consent")}
 				/>
 				<span>
 					Saya setuju data ini digunakan untuk menanggapi kebutuhan proyek
-					sesuai <a href="/privacy-policy/">kebijakan privasi</a>.
+					sesuai <a href="/privacy-policy/" className="underline underline-offset-[3px] text-blue">kebijakan privasi</a>.
 				</span>
 			</label>
 			{error("consent")}
 			<button
-				className="button button-blue form-submit"
+				className="button button-blue form-submit w-full mt-6 min-h-[52px] text-sm font-extrabold rounded-2xl flex items-center justify-between cursor-pointer disabled:cursor-wait disabled:opacity-65"
 				type="submit"
 				disabled={status === "submitting"}
 			>
@@ -263,22 +276,22 @@ export default function ContactForm() {
 				</svg>
 			</button>
 			<div
-				className={`form-notice ${status}`}
+				className={`form-notice text-[11px] leading-relaxed mt-3.5 ${status === "success" ? "text-emerald-400" : status === "error" ? "text-rose-400" : "text-slate-400"}`}
 				role="status"
 				aria-live="polite"
 				aria-atomic="true"
 			>
 				{notice}
 				{status === "error" && (
-					<a href="mailto:trio.searah@gmail.com">
+					<a href="mailto:trio.searah@gmail.com" className="block mt-1.5 underline text-blue">
 						Email trio.searah@gmail.com ↗
 					</a>
 				)}
 			</div>
 			<noscript>
-				<p>
+				<p className="mt-4 text-xs text-muted">
 					Formulir membutuhkan JavaScript. Kirim kebutuhan proyek langsung ke{" "}
-					<a href="mailto:trio.searah@gmail.com">trio.searah@gmail.com</a>.
+					<a href="mailto:trio.searah@gmail.com" className="text-blue underline">trio.searah@gmail.com</a>.
 				</p>
 			</noscript>
 		</form>
